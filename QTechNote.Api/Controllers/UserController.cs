@@ -4,6 +4,7 @@ using QTechNote.Data.Models;
 using QTechNote.Models.DTOs;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
 
 namespace QTechNote.Api.Controllers;
 
@@ -60,7 +61,9 @@ public class UserController : BaseController<User, UserLogic>
         }
         catch (Exception)
         {
-            return Ok(new { UserId = createdUser.UserId, Message = "User created successfully" });
+            // Return an error response
+            return StatusCode(500, new { Message = "An error occurred while creating the user. Please try again later." });
         }
+
     }
 }

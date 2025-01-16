@@ -6,6 +6,7 @@ using System.Text;
 using System.IdentityModel.Tokens.Jwt;
 using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
+using System.Linq.Expressions;
 
 namespace QTechNote.Api.Services;
 
@@ -90,8 +91,13 @@ public class AuthService : IAuthService
             new(ClaimTypes.Email, user.Email ?? "")
         };
 
-        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(
-            _configuration.GetSection("AppSettings:Token").Value!));
+        var tokenKey = _configuration.GetSection("AppSettings:Token")?.Value
+        ?? Environment.GetEnvironmentVariable("APPSETTINGS_TOKEN");
+        if (string.IsNullOrEmpty(tokenKey))
+            throw new Exception("JWT Token key is missing in configuration");
+
+        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenKey));
+
 
         var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256Signature);
 
@@ -126,4 +132,8 @@ public class AuthService : IAuthService
             RefreshTokenExpiry = authToken.RefreshTokenExpiry
         };
     }
+
+
+
+
 }
