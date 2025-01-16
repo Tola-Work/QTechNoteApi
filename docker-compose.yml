@@ -1,0 +1,8 @@
+services:
+  api:
+    image: your-image-name
+    environment:
+      - ConnectionStrings__DefaultConnection=Server=your_server;Database=QTechNote;User Id=your_user;Password=your_password;TrustServerCertificate=True;
+      - APPSETTINGS_TOKEN=your_jwt_secret_key_here
+    ports:
+      - "8080:80"

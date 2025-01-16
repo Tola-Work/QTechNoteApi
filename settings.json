@@ -1,0 +1,90 @@
+{
+  "editor.diagnosticSettings": {
+    "validate": true,
+    "displayDiagnostics": true
+  },
+  "problems.decorations.enabled": true,
+  "editor.problems.enabled": true,
+  "editor.problems.badges.enabled": true,
+  "editor.lightbulb.enabled": "on",
+  "[*]": {
+    "editor.diagnosticSettings": {
+      "validate": true
+    }
+  },
+  "editor.acceptSuggestionOnCommitCharacter": true,
+  "errorLens.enabled": true,
+  "errorLens.excludePatterns": [],
+  "errorLens.enabledDiagnosticLevels": [
+    "error",
+    "warning",
+    "info"
+  ],
+  "errorLens.editorHoverPartsEnabled": {
+    "messageEnabled": true,
+    "sourceCodeEnabled": true,
+    "buttonsEnabled": true
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.csharp": true
+  },
+  "csharp.diagnosticsOptions": {
+    "enabled": true
+  },
+  "omnisharp.diagnosticsOptions": {
+    "enableDiagnostics": true
+  },
+  "[csharp]": {
+    "editor.diagnosticSettings": {
+      "validate": true
+    },
+    "editor.defaultFormatter": "ms-dotnettools.csharp",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true,
+      "source.fixAll.csharp": true
+    }
+  },
+  "workbench.iconTheme": "material-icon-theme",
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "editor.suggestSelection": "first",
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 1000,
+  "omnisharp.enableEditorConfigSupport": true,
+  "omnisharp.useModernNet": true,
+  "csharp.format.enable": true,
+  "dotnet-test-explorer.testProjectPath": "**/*Tests.csproj",
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": true,
+  "git.autofetch": true,
+  "editor.fontSize": 12,
+  "editor.fontFamily": "JetBrains Mono, Cascadia Code, Monaco, 'Courier New', monospace",
+  "editor.fontLigatures": true,
+  "editor.fontWeight": "400",
+  "workbench.colorCustomizations": {
+    "editor.background": "#282c34",
+    "editor.foreground": "#abb2bf",
+    "editor.selectionBackground": "#3e4451",
+    "editor.selectionHighlightBackground": "#3e445180",
+    "editor.lineHighlightBackground": "#2c313c",
+    "editor.lineHighlightBorder": "#2c313c",
+    "editorLineNumber.foreground": "#495162",
+    "editorLineNumber.activeForeground": "#c6c6c6",
+    "sideBar.background": "#21252b",
+    "activityBar.background": "#282c34",
+    "activityBar.foreground": "#d7dae0",
+    "tab.activeBackground": "#282c34",
+    "tab.inactiveBackground": "#21252b",
+    "statusBar.background": "#21252b",
+    "statusBar.foreground": "#9da5b4",
+    "errorLens.errorBackground": "#e454541b",
+    "errorLens.errorForeground": "#ff6464",
+    "errorLens.warningBackground": "#ff942f1b",
+    "errorLens.warningForeground": "#fa973a",
+    "errorLens.infoBackground": "#00b7e420",
+    "errorLens.infoForeground": "#00b7e4",
+    "errorLens.hintBackground": "#17a2a220",
+    "errorLens.hintForeground": "#17a2a2"
+  }
+}

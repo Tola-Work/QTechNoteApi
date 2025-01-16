@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rosana Clinic API Documentation</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            max-width: 800px;
+            padding: 2rem;
+            text-align: center;
+        }
+        .logo {
+            width: 150px;
+            height: 150px;
+            margin-bottom: 2rem;
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+        }
+        .description {
+            color: #34495e;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        .docs-container {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+        .doc-option {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            width: 250px;
+        }
+        .doc-option:hover {
+            transform: translateY(-5px);
+        }
+        .doc-option h2 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+        .doc-option p {
+            color: #7f8c8d;
+            margin-bottom: 1.5rem;
+        }
+        .button {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .swagger-btn {
+            background-color: #38b2ac;
+        }
+        .swagger-btn:hover {
+            background-color: #319795;
+        }
+        .scalar-btn {
+            background-color: #4c51bf;
+        }
+        .scalar-btn:hover {
+            background-color: #434190;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Rosana Clinic API</h1>
+        <p class="description">
+            Explore our API documentation using your preferred documentation viewer.
+            Choose between Swagger UI for interactive documentation or Scalar for a modern documentation experience.
+        </p>
+        
+        <div class="docs-container">
+            <div class="doc-option">
+                <h2>Swagger UI</h2>
+                <p>Interactive API documentation with try-it-out functionality</p>
+                <a href="/swagger" class="button swagger-btn">View Swagger</a>
+            </div>
+            
+            <div class="doc-option">
+                <h2>Scalar</h2>
+                <p>Modern, clean API documentation experience</p>
+                <a href="/scalar/v1" class="button scalar-btn">View Scalar</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

@@ -1,0 +1,10 @@
+{
+  "Name": "rosana-remote",
+  "Metadata": {},
+  "Endpoints": {
+    "docker": {
+      "Host": "ssh contabo-server",
+      "SkipTLSVerify": false
+    }
+  }
+}
