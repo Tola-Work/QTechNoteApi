@@ -24,15 +24,15 @@ public class UserController : BaseController<User, UserLogic>
     public async Task<ActionResult<LoginResponseDto>> Register(RegisterRequestDto request)
     {
         // Move this log UserLogic.cs
-        if (await _logic.UsernameExistsAsync(request.Username))
+        if (await _logic.UsernameExistsAsync(request.Email))
         {
-            return BadRequest("Username already exists");
+            return BadRequest("Email already exists");
         }
 
         var user = new User
         {
             Username = request.Username,
-            Email = request.Email ?? "",
+            Email = request.Email,
             CreatedAt = DateTime.UtcNow,
             IsActive = true,
             // Don't set PasswordHash and PasswordSalt here
@@ -53,7 +53,7 @@ public class UserController : BaseController<User, UserLogic>
         {
             var loginResponse = await _authService.Login(new LoginRequestDto
             {
-                Username = request.Username,
+                Email = request.Email,
                 Password = request.Password
             });
 

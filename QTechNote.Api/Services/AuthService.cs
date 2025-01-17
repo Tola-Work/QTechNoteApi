@@ -24,13 +24,13 @@ public class AuthService : IAuthService
     public async Task<LoginResponseDto> Login(LoginRequestDto request)
     {
         var user = await _context.Users
-            .FirstOrDefaultAsync(u => u.Username == request.Username && u.IsActive == true);
+            .FirstOrDefaultAsync(u => u.Email == request.Email && u.IsActive == true);
 
         if (user == null)
-            throw new UnauthorizedAccessException("Invalid username or password");
+            throw new UnauthorizedAccessException("Invalid email or password");
 
         if (!VerifyPasswordHash(request.Password, user.PasswordHash, user.PasswordSalt))
-            throw new UnauthorizedAccessException("Invalid username or password");
+            throw new UnauthorizedAccessException("Invalid email or password");
 
         return await CreateToken(user);
     }
@@ -88,7 +88,7 @@ public class AuthService : IAuthService
         {
             new(ClaimTypes.NameIdentifier, user.UserId.ToString()),
             new(ClaimTypes.Name, user.Username),
-            new(ClaimTypes.Email, user.Email ?? "")
+            new(ClaimTypes.Email, user.Email)
         };
 
         var tokenKey = _configuration.GetSection("AppSettings:Token")?.Value

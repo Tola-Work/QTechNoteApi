@@ -70,4 +70,26 @@ public class NoteLogic : BaseLogic<Note>
         await _context.SaveChangesAsync();
         return true;
     }
+
+    // search notes by title
+    public async Task<PaginationResponseDto<Note>> SearchNotesAsync(int userId, string title, PaginationDto pagination)
+    {
+        var totalCount = await _dbSet
+            .Where(n => n.Title.Contains(title) && n.IsActive)
+            .CountAsync();
+
+        var notes = await _dbSet
+            .Where(n => n.Title.Contains(title) && n.IsActive && n.UserId == userId)
+            .OrderByDescending(n => n.UpdatedAt)
+            .Skip((pagination.Page - 1) * pagination.PageSize)
+            .Take(pagination.PageSize)
+            .ToListAsync();
+
+        return new PaginationResponseDto<Note>
+        {
+            Data = notes,
+            TotalPages = (int)Math.Ceiling((double)totalCount / pagination.PageSize),
+            CurrentPage = pagination.Page
+        };
+    }
 }

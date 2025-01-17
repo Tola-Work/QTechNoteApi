@@ -60,6 +60,7 @@ public class NoteController : BaseController<Note, NoteLogic>
         note.NoteId = id;
         note.UserId = userId;
         note.UpdatedAt = DateTime.UtcNow;
+        note.IsActive = true;
 
         var updatedNote = await _logic.UpdateNoteAsync(note);
         return Ok(updatedNote);
@@ -75,6 +76,15 @@ public class NoteController : BaseController<Note, NoteLogic>
             return NotFound();
 
         return NoContent();
+    }
+
+    // search notes by title
+    [HttpGet]
+    public async Task<ActionResult<PaginationResponseDto<Note>>> SearchNotes([FromQuery] string title, [FromQuery] PaginationDto pagination)
+    {
+        var userId = GetCurrentUserId();
+        var notes = await _logic.SearchNotesAsync(userId, title, pagination);
+        return Ok(notes);
     }
 
     // This method retrieves the current user's ID from the claims principal.

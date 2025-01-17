@@ -93,6 +93,15 @@ builder.Services.AddSwaggerGen(options =>
 // In your authorization policy setup
 builder.Services.AddAuthorization();
 
+// Add CORS configuration
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAllOrigins",
+        builder => builder.AllowAnyOrigin()
+                          .AllowAnyMethod()
+                          .AllowAnyHeader());
+});
+
 var app = builder.Build();
 
 app.UseDefaultFiles(new DefaultFilesOptions
@@ -120,6 +129,9 @@ app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
+
+// Use CORS policy
+app.UseCors("AllowAllOrigins");
 
 app.Run();
 
